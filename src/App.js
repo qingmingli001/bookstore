@@ -1,5 +1,4 @@
 import {Fragment, useState, useEffect} from 'react';
-//import './App.css';
 import BookForm from './components/BookForm'
 import Book from './components/Book'
 
@@ -8,7 +7,6 @@ const App = () => {
   const [books, setBooks] = useState([])
   const [newBook, setNewBook] = useState({})
   const [showForm, setShowForm] = useState(false)
-  
 
   useEffect(() => {
     const initBooks = [{
@@ -42,7 +40,6 @@ const App = () => {
     event.preventDefault()
     const bookObject = {
       ...newBook,
-      show : true
     }
     setBooks(books.concat(bookObject))
     setNewBook({})
@@ -71,8 +68,6 @@ const App = () => {
     console.log(books)
     setBooks(books.filter(b=>b.name !== book.name))
     console.log(books)
-    // setBooks(books.concat(deletedBook))
-    // console.log(books)
   }
   return (
     <Fragment>
