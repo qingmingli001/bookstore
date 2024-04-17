@@ -1,4 +1,4 @@
-import React, {Component, Fragment, useState, useEffect} from 'react';
+import {Fragment, useState, useEffect} from 'react';
 //import './App.css';
 import BookForm from './components/BookForm'
 import Book from './components/Book'
@@ -14,14 +14,12 @@ const App = () => {
     const initBooks = [{
       name : "After the Diagnosis",
       price : 17.5,
-      show : true,
       category : "Biography",
       description : "Dr. Julian Seifter understands the difficulty of managing a chronic condition in our health-obsessed, take-life-by-the-horns, live-forever world. When he found out he was suffering from diabetes, he was an ambitious medical resident who thought he could run away from his diagnosis. Good health was part of his self-image, and acknowledging that he needed treatment seemed like a kind of failure."
     },
     {
       name : "Tokyo Ever After",
       price : 18.5,
-      show : true,
       category : "Juvenile fiction",
       description : "It isn't easy being Japanese American in a small, mostly white, northern California town, being raised by a single mother. When Izumi Tanaka discovers her father is the Crown Prince of Japan, it means irreverent Izzy is literally a princess."
     }]
@@ -67,13 +65,14 @@ const App = () => {
   <button onClick={()=>setShowForm(true)} >Add new book</button>
 
   const handleDelete = (event, book) => {
-    console.log(event.target.value)
-    const deletedBook = {
-      ...book,
-      show : false
-    }
+    console.log(event.target)
+    console.log(book)
+
+    console.log(books)
     setBooks(books.filter(b=>b.name !== book.name))
-    setBooks(books.concat(deletedBook))
+    console.log(books)
+    // setBooks(books.concat(deletedBook))
+    // console.log(books)
   }
   return (
     <Fragment>
@@ -86,9 +85,9 @@ const App = () => {
         </div>
         <div className="bookstore">
           <ul>
-            {books.filter(b => b.show === true).map(b => {
+            {books.map(b => {
               return (
-                <Book book={b} handleDelete={handleDelete}/>
+                <Book book={b} handleDelete={(event)=>handleDelete(event, b)}/>
               )
             })}
           </ul>

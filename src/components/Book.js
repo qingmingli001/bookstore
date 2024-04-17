@@ -2,7 +2,7 @@ const Book = ({book, handleDelete}) => {
     return (
         <li className="book">
             {book.name} - {book.price} - {book.category} - {book.description}
-            <button onClick={event => handleDelete(event, book)}>delete</button>
+            <button onClick={handleDelete}>delete</button>
         </li>
     )
 }
