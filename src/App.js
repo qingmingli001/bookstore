@@ -48,41 +48,41 @@ const App = () => {
 
   const addBook = showForm ? 
   <BookForm 
-  bookName={newBook.name}
-  bookPrice={newBook.price}
-  bookCategory={newBook.category}
-  bookDescription={newBook.description}
-  handleSubmit={handleSubmit}
-  handleNameChange={handleNameChange}
-  handlePriceChange={handlePriceChange}
-  handleCategoryChange={handleCategoryChange}
-  handleDescriptionChange={handleDescriptionChange}
+  bookName = {newBook.name}
+  bookPrice = {newBook.price}
+  bookCategory = {newBook.category}
+  bookDescription = {newBook.description}
+  handleSubmit = {handleSubmit}
+  handleNameChange = {handleNameChange}
+  handlePriceChange = {handlePriceChange}
+  handleCategoryChange = {handleCategoryChange}
+  handleDescriptionChange = {handleDescriptionChange}
   />
   :
-  <button onClick={()=>setShowForm(true)} >Add new book</button>
+  <button onClick = {() => setShowForm(true)} >Add new book</button>
 
   const handleDelete = (event, book) => {
     console.log(event.target)
     console.log(book)
 
     console.log(books)
-    setBooks(books.filter(b=>b.name !== book.name))
+    setBooks(books.filter(b => b.name !== book.name))
     console.log(books)
   }
   return (
     <Fragment>
-      <div className="App">
-        <header className="App-header">
+      <div className = "App">
+        <header className = "App-header">
 
         </header>
-        <div className="add-new-book">
+        <div className = "add-new-book">
           {addBook}
         </div>
-        <div className="bookstore">
+        <div className = "bookstore">
           <ul>
             {books.map(b => {
               return (
-                <Book book={b} handleDelete={(event)=>handleDelete(event, b)}/>
+                <Book book = {b} handleDelete = {(event) => handleDelete(event, b)}/>
               )
             })}
           </ul>

@@ -11,41 +11,41 @@ const BookForm = ({
     return (
         <div>
             <h2>Add a new book</h2>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit = {handleSubmit}>
                 <div>
                     Book Name
                     <input 
-                        value={bookName}
-                        onChange={handleNameChange}
+                        value = {bookName}
+                        onChange = {handleNameChange}
                     />
                 </div>
                 <div>
                     Book Price
                     <input
-                        value={bookPrice}
-                        onChange={handlePriceChange}
+                        value = {bookPrice}
+                        onChange = {handlePriceChange}
                     />
                 </div>
 
                 <div>
                     Book Category
                     <input 
-                        value={bookCategory}
-                        onChange={handleCategoryChange}
+                        value = {bookCategory}
+                        onChange = {handleCategoryChange}
                     />
 
                 </div>
                 <div>
                     Book Description
                     <input
-                        value={bookDescription}
-                        onChange={handleDescriptionChange}
+                        value = {bookDescription}
+                        onChange = {handleDescriptionChange}
                     />
                 </div>
 
                 
 
-                <button type="submit">Save</button>
+                <button type = "submit">Save</button>
 
             </form>
         </div>
