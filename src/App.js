@@ -10,12 +10,14 @@ const App = () => {
 
   useEffect(() => {
     const initBooks = [{
+      id: 1,
       name : "After the Diagnosis",
       price : 17.5,
       category : "Biography",
       description : "Dr. Julian Seifter understands the difficulty of managing a chronic condition in our health-obsessed, take-life-by-the-horns, live-forever world. When he found out he was suffering from diabetes, he was an ambitious medical resident who thought he could run away from his diagnosis. Good health was part of his self-image, and acknowledging that he needed treatment seemed like a kind of failure."
     },
     {
+      id: 2,
       name : "Tokyo Ever After",
       price : 18.5,
       category : "Juvenile fiction",
@@ -24,7 +26,7 @@ const App = () => {
     setBooks(initBooks)
   },[])
 
-  const handleNameChange = (event) => {
+  const handleNameChange = event => {
     setNewBook({...newBook, name : event.target.value})
   }
   const handlePriceChange = event => {
@@ -62,6 +64,7 @@ const App = () => {
   <button onClick = {() => setShowForm(true)} >Add new book</button>
 
   const handleDelete = (event, book) => {
+    event.preventDefault()
     console.log(event.target)
     console.log(book)
 
@@ -69,6 +72,15 @@ const App = () => {
     setBooks(books.filter(b => b.name !== book.name))
     console.log(books)
   }
+
+  const updateBooks = (book) => {
+    const newBooks = books.map(b => b.id === book.id ? book : b);
+    setBooks(newBooks)
+  }
+
+  const showBook = books.length === 0 ? <h2>No book available right now</h2> : <h2>available books are shown below</h2>
+
+
   return (
     <Fragment>
       <div className = "App">
@@ -79,10 +91,11 @@ const App = () => {
           {addBook}
         </div>
         <div className = "bookstore">
+          {showBook}
           <ul>
             {books.map(b => {
               return (
-                <Book book = {b} handleDelete = {(event) => handleDelete(event, b)}/>
+                <Book book = {b} handleDelete = {(event) => handleDelete(event, b)} handleEdition = {updateBooks}/>
               )
             })}
           </ul>
